@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+}
+
+a {
+    color:darkorchid
+}
+
+.upper {
+    margin:40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+}
+
+.text-container {
+
+}
+
+ol {
+    padding:0;
+}
+
+li {
+    list-style-position: inside;
+    background-color: blueviolet;
+    color: white;
+    width: 200px;
+    padding:4px;
+    border-radius: 5px;
+    margin: 10px;
+    margin-left: 0px;
+}
