@@ -11,24 +11,67 @@
 
 <body>
     <header>
-        <div class="upper">
-            <a>View high scores</a>
-            <p id="timer">Time: </p>
+        <div id="upper">
+            <a id="viewScores">View high scores</a>
+            <p id="timer"></p>
         </div>
     </header>
 
-    <section>
-        <div class="text-container">
-            <h1>Arrays in JavaScript can be used to store _______.</h1>
-            <ol>
-                <li>Numbers</li>
-                <li>Booleans</li>
-                <li>Other Arrays</li>
-                <li>All of the above</li>
-            </ol>
+    <section id="intro">
+        <div>
+            <h1>Coding Quiz Challenge</h1>
+            <p>Try to answer the following code-related questions within the time limit.
+                Keep in mind that the incorrect answers will penalize your score/time by ten seconds!
+            </p>
+            <button class="btn" type="button" id="start">Start Quiz</button>
         </div>
     </section>
-    
+
+    <section id="quiz">
+        <div id="text-container">
+            <div id="question">
+
+            </div>
+            <div id="answers">
+                <button class="btn answer" id="A"></button>
+                <button class="btn answer" id="B"></button>
+                <button class="btn answer" id="C"></button>
+                <button class="btn answer" id="D"></button>
+            </div>
+            <div id="grey">
+                <em>
+                    <h2 id="answerValidation">Correct!</h2>
+                </em>
+            </div>
+        </div>
+    </section>
+
+    <section id="quiz-over">
+        <div>
+            <h1>All done!</h1>
+            <p id="finalScore">Your final score is </p>
+            <div class="form-group">
+                <label>Enter initials: </label>
+                <input type="text" class="form-control" id="score-input">
+                <button class="btn" type="submit" id="submitInitial">Submit</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="highscore">
+        <div>
+            <h1>High Scores</h1>
+            <div id="scores">
+                <ol id="score">
+
+                </ol>
+            </div>
+
+            <button class="btn" type="submit" id="goBack">Go Back</button>
+            <button class="btn" type="submit" id="clearHighScore">Clear High Scores</button>
+        </div>
+    </section>
+
     <script src="assets/js/script.js"></script>
 </body>
 

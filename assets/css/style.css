@@ -1,37 +1,116 @@
-*{
+* {
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 a {
-    color:darkorchid
+    color: darkorchid
 }
 
-.upper {
-    margin:40px;
+/* Styling the top portion of the page */
+#upper {
+    margin: 40px;
     display: flex;
     justify-content: space-between;
 }
 
+/* section styling */
 section {
     display: flex;
     justify-content: center;
+    font-size: 125%;
 }
 
-.text-container {
+section div {
+    width: 50%;
+}
 
+h1 {
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+/* -------------Intro Section------------- */
+#intro div {
+    text-align: center;
+}
+
+/* -------------Quiz Section------------- */
+#grey {
+    margin-top: 20px;
+    width: 100%;
+    border-top: 2px solid lightgray;
+}
+
+#grey h2 {
+    margin-top: 20px;
+    color: lightgray;
 }
 
 ol {
-    padding:0;
+    padding: 10px;
 }
 
 li {
     list-style-position: inside;
-    background-color: blueviolet;
-    color: white;
-    width: 200px;
-    padding:4px;
+}
+
+/* -------------Quiz Over Section------------- */
+input {
+    height: 28px;
+}
+
+.form-group {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.form-control {
+    flex: 1;
+    margin-right: 10px;
+}
+
+/* -------------High Scores Section------------- */
+#scores {
+    width: 100%;
+    background-color: lavender;
+    margin-bottom: 40px;
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    background-color: indigo;
+    border: none;
     border-radius: 5px;
-    margin: 10px;
-    margin-left: 0px;
+    padding: 4px 10px 4px 10px;
+    color: white;
+    font-size: 105%;
+}
+
+.btn:hover {
+    background-color: blueviolet;
+}
+
+#start {
+    margin-top: 40px;
+}
+
+.answer {
+    display: block;
+    width: 450px;
+    height: 35px;
+    padding: 0 10px 0 10px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/* Default Display */
+
+#quiz,
+#quiz-over,
+#highscore,
+#grey {
+    display: none;
 }
