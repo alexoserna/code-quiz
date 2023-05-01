@@ -1,6 +1,6 @@
 const start = document.getElementById('start');
 // view scores
-const viewScore = document.getElementById('viewScores');
+const viewScore = document.getElementById('view-scores');
 // Sections to display based on game instance
 const intro = document.getElementById('intro');
 const quiz = document.getElementById('quiz');
@@ -125,10 +125,6 @@ function displayQuestion(index) {
     ansB.textContent = q.ansB;
     ansC.textContent = q.ansC;
     ansD.textContent = q.ansD;
-    console.log(q.ansA);
-    console.log(q.ansB);
-    console.log(q.ansC);
-    console.log(q.ansD);
 }
 
 function countdown(maxTime) {
@@ -141,19 +137,19 @@ function countdown(maxTime) {
             timeLeft--;
             timerEl.textContent = timerDefault + timeLeft;
         } else {
+            clearInterval(timeInterval);
             timeLeft = 0;
+            if (timeLeft == 0) {
+                gameOver();
+            }
         }
     }, 1000);
-    if (timeLeft == 0) {
-        gameOver();
-    }
 }
 
 function checkAnswer(answer) {
     console.log('Button clicked ' + answer);
     if (questions[currentQuestion].correct == answer) {
         score++;
-        console.log(score);
         answerCorrect();
 
         if (currentQuestion < questions.length - 1) {
@@ -166,9 +162,6 @@ function checkAnswer(answer) {
     } else {
         if (timeLeft >= 10) {
             timeLeft -= 10;
-        } else {
-            timeLeft = 0;
-            gameOver();
         }
         answerWrong();
     }
@@ -201,29 +194,31 @@ function storeScores() {
 
 function gameOver() {
     console.log('showing quiz over');
-    quiz.style.display = 'none';
-    quizOver.style.display = 'flex';
+    displayNone(quiz);
+    displayFlex(quizOver);
     finalScore.textContent = 'Your final score is ' + score + '!';
 };
 
 function showScores() {
-    quizOver.style.display = 'none';
-    highScoreSection.style.display = 'flex';
+    displayNone(intro);
+    displayNone(quiz);
+    displayNone(quizOver);
+    displayFlex(highScoreSection);
 }
 
 function answerCorrect() {
-    greySection.style.display = 'flex';
+    displayFlex(greySection);
     answerValidated.textContent = 'Correct!';
     setTimeout(function () {
-        greySection.style.display = "none";
+        displayNone(greySection);
     }, 3000);
 }
 
 function answerWrong() {
-    greySection.style.display = 'flex';
+    displayFlex(greySection);
     answerValidated.textContent = 'Wrong!';
     setTimeout(function () {
-        greySection.style.display = "none";
+        displayNone(greySection);
     }, 3000);
 }
 
@@ -234,8 +229,8 @@ function startQuiz() {
     countdown(timeLeft);
 
     // Change display types in order to display the correct section
-    intro.style.display = 'none';
-    quiz.style.display = 'flex';
+    displayNone(intro);
+    displayFlex(quiz);
 
     // Display question
     displayQuestion(currentQuestion);
@@ -248,8 +243,17 @@ function goBack() {
     score = 0;
     timeLeft = 0;
 
-    highScoreSection.style.display='none';
-    intro.style.display='flex';
+    displayNone(highScoreSection);
+    displayFlex(intro);
+}
+
+// Helper functions for dry code
+function displayFlex(element) {
+    element.style.display = 'flex';
+}
+
+function displayNone(element) {
+    element.style.display = 'none';
 }
 
 // Event Listener
@@ -277,14 +281,17 @@ submitInitial.addEventListener("click", function (event) {
     displayHighScores();
     showScores();
 });
-restart.addEventListener("click", ()=>{
+restart.addEventListener("click", () => {
     goBack();
 });
-resetScores.addEventListener("click", function(event) {
+resetScores.addEventListener("click", function (event) {
     event.preventDefault();
-    console.log('should be removing the thing');
     localStorage.removeItem("highScores");
     highScores = [null];
     displayHighScores();
+    showScores();
+});
+viewScore.addEventListener("click", () => {
+
     showScores();
 });
