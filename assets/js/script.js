@@ -160,8 +160,10 @@ function checkAnswer(answer) {
         }
 
     } else {
-        if (timeLeft >= 10) {
-            timeLeft -= 10;
+        if (timeLeft < 10) {
+            timeLeft = 0;
+        } else {
+            timeLeft-=10;
         }
         answerWrong();
     }
@@ -292,6 +294,5 @@ resetScores.addEventListener("click", function (event) {
     showScores();
 });
 viewScore.addEventListener("click", () => {
-
     showScores();
 });
