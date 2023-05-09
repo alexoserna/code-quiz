@@ -1,4 +1,4 @@
-# Password Generator
+# Code Quiz
 
 ## Description
 This application functions as review for somebody beginning to learn front end web development. It is a timed quiz program
